@@ -1,6 +1,6 @@
 import { currentProfile } from "@/lib/current-profile"
 import { db } from "@/lib/db";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 import { NavigationAction } from "./navigation-action";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
