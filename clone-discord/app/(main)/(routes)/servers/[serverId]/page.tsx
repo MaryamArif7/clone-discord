@@ -1,6 +1,6 @@
 const ServerIdPage=()=>{
     return (
-        <div> ServerPage</div> 
+        <div> ServerPagehg</div> 
     )
 }
 export default ServerIdPage;
