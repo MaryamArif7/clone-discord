@@ -5,6 +5,8 @@ import { NavigationAction } from "./navigation-action";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
 import { NavigationItem } from "./navigation-item";
+import { ModeToggle } from "@/components/mode-toggle";
+import { UserButton } from "@clerk/nextjs";
 
 export const NavigationSidebar=async()=>{
     const profile=await currentProfile();
@@ -19,7 +21,7 @@ export const NavigationSidebar=async()=>{
                 }
             }
         }
-    })
+    });
     return (
         <div 
         className="space-y-4 flex flex-col items-center h-full text-primary w-full dark:bg-[#1E1F22]" 
@@ -40,6 +42,21 @@ export const NavigationSidebar=async()=>{
             ))}
 
         </ScrollArea>
+       <div className="pb-3 mt-auto flex items-center flex-col gap-y-4">
+       <ModeToggle />
+    <UserButton  
+    afterSignOutUrl="/"
+    appearance={{
+        elements:{
+            avatarBox: "h-[48px] w-[48px]"
+            
+        }
+    }}
+    
+    
+    />
+
+        </div>
 
         </div>
 
