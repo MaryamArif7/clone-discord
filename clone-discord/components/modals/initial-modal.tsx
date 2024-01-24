@@ -1,5 +1,5 @@
 "use client";
-
+//6 modal(when we click on the server ):
 import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -37,6 +37,7 @@ const formSchema = z.object({
 });
 
 export const InitialModal = () => {
+  {/**to remove the hydration error the mount thing  */} 
   const [isMounted, setIsMounted] = useState(false);
 
   const router = useRouter();
@@ -54,7 +55,7 @@ export const InitialModal = () => {
   });
 
   const isLoading = form.formState.isSubmitting;
-
+   {/* 8.1:server creation API: intsallled axios then */}
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.post("/api/servers", values);
@@ -66,7 +67,7 @@ export const InitialModal = () => {
       console.log(error);
     }
   }
-
+   {/*....... */}
   if (!isMounted) {
     return null;
   }

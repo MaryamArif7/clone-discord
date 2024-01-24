@@ -26,6 +26,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+// we added the below .env this .env file contains our environment variables 
 .env
 # vercel
 .vercel

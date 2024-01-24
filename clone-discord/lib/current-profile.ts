@@ -1,3 +1,5 @@
+//5.5 prisma:
+
 import { auth } from "@clerk/nextjs";
 // we are checking that if user is already logged in 
 import { db } from "@/lib/db";

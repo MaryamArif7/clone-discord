@@ -5,7 +5,8 @@ import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu
 import { ChevronDown } from "lucide-react";
 import { DropdownMenuContent, DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
 interface ServerHeaderProps{
- /*   cant use the prisma server beacuse this server also has memebers channels
+ //11.3:serversidebar:
+  /*   cant use the prisma server beacuse this server also has memebers channels
   and it has profiles of those members this server does not have all types which server had in the server side
 bar so we need to create the types file for this server if we dont use the server of serverwithmemberswith profiles
 it will give error whenb we distruct members from the server */

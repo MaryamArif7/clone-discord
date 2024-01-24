@@ -1,5 +1,6 @@
 "use client"
-
+/* 4.3 copy and pasted the the mode tggle code from the shadcn ui nd added here instll locally drop down menu which is in the 
+ui folder and imported here  */
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"

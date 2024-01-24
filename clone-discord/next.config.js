@@ -8,6 +8,7 @@ const nextConfig = {
   
       return config;
     },
+    //7.6:uploadthing : added uploadthing.com in the domains
     images: {
       domains: [
         "uploadthing.com",

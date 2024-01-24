@@ -4,7 +4,7 @@ import { ChannelType } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { ServerHeader } from "./server-header";
 
-
+//11.2 server sidebar
 interface ServerSidebarProps{
     serverId:string;
 }
