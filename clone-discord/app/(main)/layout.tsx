@@ -1,3 +1,4 @@
+//9.1 Navigation Sidebar:
 import { NavigationSidebar } from "@/components/navigation/navigation-sidebar";
 
 const MainLayout=async({

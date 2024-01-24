@@ -1,3 +1,6 @@
+
+/*1. from shadcdn ui component we get the fully customized button just install 
+n the terminl then can be added in the app in the any compenent   */
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"

@@ -1,3 +1,4 @@
+// the main layout file for the whole application can chnage the font etc for the whole application here 
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -17,16 +18,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+    // 3.1 authenticate :  wrap up the whole application with clerk provider  in the root layout 
     <ClerkProvider>
     <html lang="en" suppressHydrationWarning>
+      {/*4.5 we are adding the cn class here to make the app color greyish instead of black */}
       <body className={cn(inter.className,
       "bg-white dark:bg-[#313338]")}>
+         {/* 4.2 dark and light mode : theme provider  */}
+          {/* enabling hte system true we get the third opetion in the mode toggle for chnaing the theme of the whole appplication  */}
       <ThemeProvider
        attribute='class'
       defaultTheme='dark'
       enableSystem={false}
       storageKey='discord-theme'>
-        <ModalProvider />
+       
+       {/**importing the modl here  */} <ModalProvider />
         {children}
         </ThemeProvider>
         </body>

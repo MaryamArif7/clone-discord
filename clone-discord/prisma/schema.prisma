@@ -1,11 +1,13 @@
 generator client {
   provider = "prisma-client-js"
 }
+//5.3 prism setup: pasted the code from the planetscale 
 datasource db {
   provider = "mysql"
   url = env("DATABASE_URL")
   relationMode = "prisma"
 }
+//5.4 prisma setup: creating models 
 model Profile{
   id String @id @default(uuid())
   userId String @unique
@@ -71,3 +73,6 @@ model Channel {
   @@index([serverId])
   @@index([profileId])
 }
+// after creating models we are rewuired to run some commands and needs to do this everytime we modlify the schema
+// npx prisma genertae : this command will add the schema to the our node modules  so we can develop with it 
+//npx prisma db push : this will add the all our collections to the  into our planetscale or whtever we are using for our mysqldb 

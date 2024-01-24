@@ -1,3 +1,4 @@
+//7.5 :uploadthing :
 "use client"
 import { UploadDropzone } from "@/lib/uploadthing";
 import "@uploadthing/react/styles.css";

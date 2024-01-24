@@ -3,6 +3,7 @@ tis is still server side rendering all this means is its not a react server comp
 use cleints components are in server side rendering  but use client means that its also render on the client side thats why 
 its creates  hydreation error if one state is render on  the server and other state is render on the client side
 so modaal are on the client sidde */
+//10.3:Server Modal :
 import { CreateServerModal } from "@/components/modals/create-server-modal.";
 import { useEffect, useState } from "react";
 export const ModalProvider=()=>{
