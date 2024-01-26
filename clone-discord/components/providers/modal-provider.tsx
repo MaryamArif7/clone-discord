@@ -6,6 +6,7 @@ so modaal are on the client sidde */
 //10.3:Server Modal :
 import { CreateServerModal } from "@/components/modals/create-server-modal.";
 import { useEffect, useState } from "react";
+import { InviteModal } from "@/components/modals/invite-modal";
 export const ModalProvider=()=>{
     const [isMounted, setIsMounted]=useState(false);
     /*this is preventing modals to be rendered on the server side because
@@ -20,6 +21,7 @@ export const ModalProvider=()=>{
     return (
         <>
        <CreateServerModal />
+       <InviteModal />
         </>
     )
 }
