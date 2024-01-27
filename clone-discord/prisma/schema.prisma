@@ -25,7 +25,9 @@ model Server {
   id String @id @default(uuid())
   name String
   imageUrl String @db.Text
-  inviteCode String @db.Text
+  // 13.5 in 13.4 for the server function "where " wass giving the error so instead of db.text its @unique
+  //after making chnaging in prisma schema run npx prism generate and npx prism db pusuh
+  inviteCode String @unique
   profileId String
 
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
