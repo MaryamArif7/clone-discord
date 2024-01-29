@@ -91,3 +91,5 @@ export const InviteModal = () => {
     </Dialog>
   )
 }
+{/*notes :generatew new link : if the users tries to send the old link to the some other user it will not work  because it changed in the database because if we can
+invalidate link if we dont want them to the spread   */}

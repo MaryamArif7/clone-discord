@@ -2,6 +2,8 @@ import { Channel, ChannelType, Server } from "@prisma/client";
 import { create } from "zustand";
 //10:modalstore
 //12.2 to invite people when they click on the invite peopple
+//14.1 :server settings : edit server
+//15.1:mangae memebers :added members here 
 export type ModalType = "createServer" | "invite" | "editServer" | "members" | "createChannel" | "leaveServer" | "deleteServer" | "deleteChannel" | "editChannel" | "messageFile" | "deleteMessage";
 interface ModalData {
   server?: Server;
