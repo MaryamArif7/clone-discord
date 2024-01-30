@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { InviteModal } from "@/components/modals/invite-modal";
 import { EditServerModal } from "@/components/modals/edit-server-modal";
 import { MembersModal } from "@/components/modals/members-modal";
+import { CreateChannelModal } from "../modals/create-channel-modal";
 export const ModalProvider=()=>{
     const [isMounted, setIsMounted]=useState(false);
     /*this is preventing modals to be rendered on the server side because
@@ -28,6 +29,8 @@ export const ModalProvider=()=>{
       <EditServerModal />
       {/**15.3 addding members modal */}
       <MembersModal />
+      {/**16.3 Create channel modl */}
+       <CreateChannelModal />
         </>
     )
 }

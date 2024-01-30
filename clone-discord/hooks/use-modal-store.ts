@@ -4,6 +4,7 @@ import { create } from "zustand";
 //12.2 to invite people when they click on the invite peopple
 //14.1 :server settings : edit server
 //15.1:mangae memebers :added members here 
+//16.1:channel : adding create chnnel for the channel c reatin model
 export type ModalType = "createServer" | "invite" | "editServer" | "members" | "createChannel" | "leaveServer" | "deleteServer" | "deleteChannel" | "editChannel" | "messageFile" | "deleteMessage";
 interface ModalData {
   server?: Server;
