@@ -1,5 +1,5 @@
 "use client";
-//16.2 Create Channel Modal:
+//19...... edit Channel Modal:
 import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -30,13 +30,13 @@ SelectContent,
 SelectItem,
 SelectTrigger,
 SelectValue,
-
 } from "@/components/ui/select";
 import { ChannelType } from "@prisma/client";
 import { useEffect } from "react";
+
 {/** formschema is preventing the user from keeping the nme of the chnnel as general
  */}
-const formSchema = z.object({
+ const formSchema = z.object({
   name: z.string().min(1, {
     message: "Channel name is required."
   }).refine(
@@ -50,43 +50,43 @@ const formSchema = z.object({
  
 });
 //19....to add the chnnel type get the dat from use modl
-export const CreateChannelModal = () => {
+export const EditChannelModal = () => {
   const { isOpen,onClose,type,data}=useModal();
-  const {channelType}=data;
+  const {channelType,channel,server}=data;
   const router = useRouter();
   const params=useParams();
-  const isModalOpen=isOpen && type== "createChannel"
+  const isModalOpen=isOpen && type== "editChannel"
   //we were getting the error down below "onSubmit " after  giving defalut value of type  as the text error ws gone
   //we were getting the error in the useeffect if condtion when passed channeltype.text only
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      type:channelType||ChannelType.TEXT,
-    
+      type:ChannelType.TEXT || channel?.type,
     }
   });
 //19..... so the  when we click on the audio channl is clicked , the audio channel is already selected by default 
 
 useEffect(()=>{
- if(channelType){
-  form.setValue("type",channelType);
+ if(channel){
+  form.setValue("type",channel.type);
+form.setValue("name",channel.name)
  }
- else{
-  form.setValue("type",ChannelType.TEXT);
- }
-},[channelType,form]);
+
+},[form,channel]);
   const isLoading = form.formState.isSubmitting;
 {/* the const url will append the server id query so we will know where to create the chnnelw */}
 const onSubmit = async (values: z.infer<typeof formSchema>) => {
   try {
     const url = qs.stringifyUrl({
-      url: "/api/channels",
+      url: `/api/channels/${channel?.id}`,
       query: {
-        serverId: params?.serverId
+        //serverId: params?.serverId
+        //instead of using params we can use server frorm our data 
+        serverId:server?.id
       }
     });
-    await axios.post(url, values);
+    await axios.patch(url, values);
 
     form.reset();
     router.refresh();
@@ -104,7 +104,7 @@ const onSubmit = async (values: z.infer<typeof formSchema>) => {
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
-            Customize your Channel
+            Edit your Channel
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>
@@ -175,7 +175,7 @@ const onSubmit = async (values: z.infer<typeof formSchema>) => {
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
               <Button variant="primary" disabled={isLoading}>
-                Create
+                Save
               </Button>
             </DialogFooter>
           </form>

@@ -10,6 +10,10 @@ import { InviteModal } from "@/components/modals/invite-modal";
 import { EditServerModal } from "@/components/modals/edit-server-modal";
 import { MembersModal } from "@/components/modals/members-modal";
 import { CreateChannelModal } from "../modals/create-channel-modal";
+import { LeaveServerModal } from "@/components/modals/leave-server-modal";
+import { DeleteServerModal } from "../modals/delete-server-modal";
+import { DeleteChannelModal } from "../modals/delete-channel-modal";
+import { EditChannelModal } from "../modals/edit-channel-modal ";
 export const ModalProvider=()=>{
     const [isMounted, setIsMounted]=useState(false);
     /*this is preventing modals to be rendered on the server side because
@@ -31,6 +35,14 @@ export const ModalProvider=()=>{
       <MembersModal />
       {/**16.3 Create channel modl */}
        <CreateChannelModal />
+       {/** 17.3 leave server modal compionenet rendering  */}
+       <LeaveServerModal />
+       {/**18.3....Delete server modal  */}
+       <DeleteServerModal/>
+        {/**19......Delete channel modal  */}
+        <DeleteChannelModal />
+        {/**19.... Edit channel Modal */}
+        <EditChannelModal/>
         </>
     )
 }
