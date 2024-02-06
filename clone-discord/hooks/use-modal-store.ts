@@ -5,6 +5,13 @@ import { create } from "zustand";
 //14.1 :server settings : edit server
 //15.1:mangae memebers :added members here 
 //16.1:channel : adding create chnnel for the channel c reatin model
+//17.1 deleting the channel and levinng the server we shoiud hve tlest two meenbers for the server to work propelerly 
+//17.... onlu the admin can delete the server the guest and the oyher users only can the leave ethe server 
+//18.1... delete the server: 
+//19.... added the channel type in the interface so when we open the audio channel it shold be audio by defalt when video ,video by default  
+
+//19..... added the edit channel and delete channel t delte the channels
+
 export type ModalType = "createServer" | "invite" | "editServer" | "members" | "createChannel" | "leaveServer" | "deleteServer" | "deleteChannel" | "editChannel" | "messageFile" | "deleteMessage";
 interface ModalData {
   server?: Server;
