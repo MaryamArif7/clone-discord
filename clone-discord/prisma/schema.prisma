@@ -29,7 +29,6 @@ model Server {
   //after making chnaging in prisma schema run npx prism generate and npx prism db pusuh
   inviteCode String @unique
   profileId String
-
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
   members Member[]
   channels Channel[]
@@ -42,19 +41,27 @@ enum  MemberRole{
   MODERATOR
   GUEST
 }
-model Member{
+model Member {
   id String @id @default(uuid())
   role MemberRole @default(GUEST)
 
-  profileId String 
-  profile Profile @relation(fields: [profileId],references: [id],onDelete: Cascade)
-  serverId String
-  server Server @relation(fields: [serverId],references: [id],onDelete: Cascade)
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-@@index([profileId])
-@@index([serverId])
+  profileId String
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
+  serverId String
+  server Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
+
+  messages Message[]
+  directMessages DirectMessage[]
+//handeling the both of the casees is user inites the convo or just receive mesage from the use
+  conversationsInitiated Conversation[] @relation("MemberOne")
+  conversationsReceived Conversation[] @relation("MemberTwo")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([profileId])
+  @@index([serverId])
 }
 enum ChannelType{
   TEXT 
@@ -65,16 +72,78 @@ model Channel {
   id String @id @default(uuid())
   name String
   type ChannelType @default(TEXT)
-  profileId String
-  serverId String
 
+  profileId String
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  serverId String
   server Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
+
+  messages Message[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  @@index([serverId])
+
   @@index([profileId])
+  @@index([serverId])
 }
 // after creating models we are rewuired to run some commands and needs to do this everytime we modlify the schema
 // npx prisma genertae : this command will add the schema to the our node modules  so we can develop with it 
 //npx prisma db push : this will add the all our collections to the  into our planetscale or whtever we are using for our mysqldb 
+//22...updting the schema prisma
+model Message {
+  id String @id @default(uuid())
+  content String @db.Text
+
+  fileUrl String? @db.Text
+
+  memberId String
+  member Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  channelId String
+  channel Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+// when the messgae is delted by user we are not gonna delete it from our database just from the user sides 
+  deleted Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([channelId])
+  @@index([memberId])
+}
+model Conversation {
+  id String @id @default(uuid())
+
+  memberOneId String
+  memberOne Member @relation("MemberOne", fields: [memberOneId], references: [id], onDelete: Cascade)
+
+  memberTwoId String
+  memberTwo Member @relation("MemberTwo", fields: [memberTwoId], references: [id], onDelete: Cascade)
+
+  directMessages DirectMessage[]
+//cant have two converstions for one member
+  @@index([memberTwoId])
+
+  @@unique([memberOneId, memberTwoId])
+}
+model DirectMessage {
+  id String @id @default(uuid())
+  content String @db.Text
+  fileUrl String? @db.Text
+
+  memberId String
+  member Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  conversationId String
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  deleted Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([memberId])
+  @@index([conversationId])
+}
+//npx prisma generate :to add the models into the node modules
+//npx  prisma db push :tp push the models to the plnaetscle

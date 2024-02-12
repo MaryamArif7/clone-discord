@@ -44,7 +44,15 @@ const ChannelIdPage = async({
     }
     return (  
         <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
-<ChatHeader />
+            {/* 21.2....passing the props of chat header this is the page thht is rendering the chat page */}
+<ChatHeader
+name={channel.name}
+serverId={channel.serverId}
+type="channel"
+
+
+
+/>
         </div>
     );
 }
