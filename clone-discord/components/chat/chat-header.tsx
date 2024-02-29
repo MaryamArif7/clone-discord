@@ -1,9 +1,9 @@
 
 //21.1
-
-import { channel } from "diagnostics_channel";
 import { Hash } from "lucide-react";
 import { MobileToggle } from "../mobile-toggle";
+import { UserAvatar } from "../user-avatar";
+import { SocketIndicator } from "../socket-indicator";
 //interface has both the channel and converstion as type because one: we are gonna have both have the channel one to one member converstaion and two: for audio and vido chnnel
 interface ChatHeaderProps{
     serverId:string;
@@ -23,10 +23,19 @@ export const ChatHeader=({
            {type==="channel" &&(
             <Hash className="w-5 h-5 text-zinc-500 dark:text-zinc-400 mr-2" />
            )}
+           {type==="conversation"&&(
+            <UserAvatar
+            src={imageUrl}
+            className="h-8 w-8 md:h-8 md:w-8 mr-2" />
+           )}
            {/** the name on the top of chat header after hash sign */}
            <p className="font-semibold text-md text-black dark:text-white">
             {name}
            </p>
+{/**24.4... importing socket indicator here  */}
+<div className="ml-auto flex items-center">
+<SocketIndicator />
+</div>
 
             </div>
 
