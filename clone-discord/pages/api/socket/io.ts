@@ -5,7 +5,7 @@ import { NextApiRequest } from "next";
 import {Server as ServerIO} from "socket.io";
 //worked in types.ts file
 import { NextApiResponseServerIo } from "@/types";
-import Server from "next/dist/server/base-server";
+
 export const config ={
     api:{
         bodyParser:false,
