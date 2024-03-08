@@ -36,6 +36,7 @@ export default function RootLayout({
        <SocketProvider>
        {/**importing the modl here  */} 
        <ModalProvider />
+       {/* 27.5 wrapping the children inside of the query prcd.  */}
         {children}
         </SocketProvider>
         </ThemeProvider>

@@ -11,7 +11,7 @@ import { create } from "zustand";
 //19.... added the channel type in the interface so when we open the audio channel it shold be audio by defalt when video ,video by default  
 
 //19..... added the edit channel and delete channel t delte the channels
-
+//26.3 adding the modal for file modal and adding apiUrl,query
 export type ModalType = "createServer" | "invite" | "editServer" | "members" | "createChannel" | "leaveServer" | "deleteServer" | "deleteChannel" | "editChannel" | "messageFile" | "deleteMessage";
 interface ModalData {
   server?: Server;
