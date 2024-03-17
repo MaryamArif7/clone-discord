@@ -50,7 +50,7 @@ export const ChatMessages = ({
 
   const chatRef = useRef<ElementRef<"div">>(null);
   const bottomRef = useRef<ElementRef<"div">>(null);
-
+//28.2 added the props and statuses 
   const {
     data,
     fetchNextPage,
@@ -95,9 +95,11 @@ export const ChatMessages = ({
   }
 
   return (
+
     <div ref={chatRef} className="flex-1 flex flex-col py-4 overflow-y-auto">
       {!hasNextPage && <div className="flex-1" />}
       {!hasNextPage && (
+          //28.4... rendering the messages 
         <ChatWelcome
           type={type}
           name={name}
@@ -121,6 +123,7 @@ export const ChatMessages = ({
         {data?.pages?.map((group, i) => (
           <Fragment key={i}>
             {group.items.map((message: MessageWithMemberWithProfile) => (
+              //28.6
               <ChatItem
                 key={message.id}
                 id={message.id}

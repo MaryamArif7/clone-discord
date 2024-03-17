@@ -1,7 +1,8 @@
-/** @type {import('next').NextConfig} */
+/* @type {import('next').NextConfig} */
 const nextConfig = {
     webpack: (config) => {
       config.externals.push({
+        //29.6 
         "utf-8-validate": "commonjs utf-8-validate",
         bufferutil: "commonjs bufferutil"
       });

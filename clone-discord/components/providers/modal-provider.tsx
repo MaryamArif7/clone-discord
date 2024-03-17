@@ -15,6 +15,7 @@ import { DeleteServerModal } from "../modals/delete-server-modal";
 import { DeleteChannelModal } from "../modals/delete-channel-modal";
 import { EditChannelModal } from "../modals/edit-channel-modal ";
 import { MessageFileModal } from "../modals/message-file-modal";
+import { DeleteMessageModal } from "../modals/delete-message-modal";
 export const ModalProvider=()=>{
     const [isMounted, setIsMounted]=useState(false);
     /*this is preventing modals to be rendered on the server side because
@@ -46,6 +47,9 @@ export const ModalProvider=()=>{
         <EditChannelModal/>
         {/**24.5....  message file uplod modal*/}
         <MessageFileModal />
+
+        {/* 29.5...delete message modal */}
+        <DeleteMessageModal />
         </>
     )
 }

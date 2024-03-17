@@ -1,5 +1,5 @@
 "use client";
-
+//28.5
 import * as z from "zod";
 import axios from "axios";
 import qs from "query-string";
@@ -61,6 +61,7 @@ export const ChatItem = ({
   socketUrl,
   socketQuery
 }: ChatItemProps) => {
+  //28.7
   const [isEditing, setIsEditing] = useState(false);
   const { onOpen } = useModal();
   const params = useParams();
